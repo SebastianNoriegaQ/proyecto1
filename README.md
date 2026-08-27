@@ -5,10 +5,15 @@ Creo que puede ser muy útil para estudiantes nuevos de cálculo 1 que necesiten
 
 # Algoritmo
 E0(nivel de dificultad, cantidad de ejercicios, resultado)
+
 dificultad = [1, 2, 3...]
+
 templates_funciones = [ax^n ± bx^m + c, alog(bx^n±c), asin(x^n), etc]
 
 seleccionar un grado de dificultad, randomizar los valores de las funciones que serán generadas (a, b, c, n, m)
-desplegar las funciones y esperar el resultado 
+
+desplegar las funciones y esperar el resultado del usuario
+
 comparar el resultado con la derivada calculada por el programa (sp.diff(funcion, x))
+
 desplegar la cantidad y porcentaje de aciertos 
