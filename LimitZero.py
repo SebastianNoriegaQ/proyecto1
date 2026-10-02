@@ -1,33 +1,25 @@
 import math
 import random
 
-# definir las variables para las funciones
-# coeficientes
 
-a = 1 
-b = 1 
-c = 1
-d = 1
-# exponentes
-m = 1 
-n = 1 
-p = 1 
-q = 1
-
-# funciones
-fun1 = ""
-fun2 = ""
-fun3 = ""
-fun4 = ""
-fun5 = ""
-
-#variable para guardar aciertos
+# variable para guardar aciertos
 aciertos = 0
+
+# variable de dificultad
+dificultad = int(input("¿Qué grado de dificultad quieres practicar? (1-4)"))
+
+if 1 > dificultad > 4:
+    print("Grado de dificultad fuera del rango")
 
 # definir el template de las funciones
 
 def select_trig():
-    trig_num = random.randint(1,6)
+
+    trig_num = random.randint(1, 6)
+    """
+    (uso de estrucutras de decisión, uso de funciones)
+    devuelve: funcion trigonometrica
+    """
     if trig_num == 1:
         trig = "sin"
     elif trig_num == 2:
@@ -42,60 +34,79 @@ def select_trig():
         trig = "csc"
     return trig
 
-def generar_funcion1():
-    a = random.randint(-9,9)
-    b = random.randint(-9,9)
-    c = random.randint(-9,9)
-    m = random.randint(1,9)
-    n = random.randint(1,9)
+
+def generar_funcion_polinomial():
+    a = random.randint(-9, 9)
+    b = random.randint(-9, 9)
+    c = random.randint(-9, 9)
+    m = random.randint(1, 9)
+    n = random.randint(1, 9)
     fun1 = f"{a}x^{m} + {b}x^{n} + {c}"
     return fun1
 
-def generar_funcion2():
-    a = random.randint(-9,9)
-    b = random.randint(-9,9)
-    c = random.randint(-9,9)
-    m = random.randint(1,9)
-    n = random.randint(1,9)
+
+def generar_funcion_producto():
+    a = random.randint(-9, 9)
+    b = random.randint(-9, 9)
+    c = random.randint(-9, 9)
+    m = random.randint(1, 9)
+    n = random.randint(1, 9)
     fun2 = f"({a}x^{m}) * ({b}x^{n})"
     return fun2
 
-def generar_funcion3():
-    a = random.randint(-9,9)
-    b = random.randint(-9,9)
-    c = random.randint(-9,9)
-    m = random.randint(1,9)
-    n = random.randint(1,9)
+
+def generar_funcion_cociente():
+    a = random.randint(-9, 9)
+    b = random.randint(-9, 9)
+    c = random.randint(-9, 9)
+    m = random.randint(1, 9)
+    n = random.randint(1, 9)
     fun3 = f"({a}x^{m}) / ({b}x^{n})"
-    return fun3 
+    return fun3
 
 
-def generar_funcion4():
-    a = random.randint(-9,9)
+def generar_funcion_trig1():
+    a = random.randint(-9, 9)
+    c = random.randint(-9, 9)
     trig = select_trig()
     fun4 = f"{a}{trig}(x) + {c}"
     return fun4
 
-def generar_funcion5():
-    a = random.randint(-9,9)
-    b = random.randint(-9,9)
-    c = random.randint(-9,9)
-    m = random.randint(1,9)
-    n = random.randint(1,9)
+
+def generar_funcion_trig2():
+    a = random.randint(-9, 9)
+    b = random.randint(-9, 9)
+    c = random.randint(-9, 9)
+    m = random.randint(1, 9)
+    n = random.randint(1, 9)
     trig = select_trig()
     fun5 = f"{a}{trig}(x^{m} + {b}x^{n}) + {c}"
     return fun5
 
 
 
-def calcular_aciertos(aciertos):
-    return aciertos/5
+def calcular_aciertos(num_aciertos):
+    return num_aciertos / 5
 
-def imprimir_funciones():
-    print(generar_funcion1())
-    print(generar_funcion2())
-    print(generar_funcion3())
-    print(generar_funcion4())
-    print(generar_funcion5())
 
-imprimir_funciones()
+def seleccionar_pool(nivel_dificultad):
+    """
+    (uso de estrucutras de decisión, uso de funciones)
+    devuelve: funcion trigonometrica
+    """
+    if nivel_dificultad == 1:
+        fun1 = generar_funcion_polinomial()
+        fun2 = generar_funcion_polinomial()
+    elif nivel_dificultad == 2:
+        fun1 = generar_funcion_cociente()
+        fun2 = generar_funcion_producto()
+    elif nivel_dificultad == 3:
+        fun1 = generar_funcion_trig1()
+        fun2 = generar_funcion_trig2()
+    return fun1, fun2   
+
+
+fun1, fun2 = seleccionar_pool(dificultad)
+
+print(fun1)
+print(fun2)
